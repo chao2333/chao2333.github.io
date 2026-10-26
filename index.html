@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101a2c">
+  <meta name="description" content="Yongchao Zhu — MSc Computer Science student at Université Paris-Saclay. Projects in systems programming, parallel computing, algorithms and Android development.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Yongchao Zhu — Software & Systems Portfolio">
+  <meta property="og:description" content="Selected software projects, academic work and professional experience.">
+  <meta property="og:url" content="https://chao2333.github.io/">
+  <title>Yongchao Zhu · Software & Systems Portfolio</title>
+  <style>
+    :root {
+      --ink: #122136; --muted: #667386; --line: #e3e9ee; --paper: #f7f9fc;
+      --white: #fff; --navy: #101a2c; --navy-2: #17243a; --aqua: #93f4da;
+      --teal: #126d69; --accent: #2b786e; --radius: 18px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; line-height: 1.62; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #2cc9b6; outline-offset: 4px; }
+    ::selection { background: #b3f3e3; color: #102137; }
+    .container { width: min(1110px, calc(100% - 48px)); margin-inline: auto; }
+    .topbar { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.94); border-bottom: 1px solid rgba(23,39,58,.08); backdrop-filter: blur(18px); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; min-height: 72px; gap: 24px; }
+    .brand { font-weight: 850; letter-spacing: -.07em; font-size: 23px; white-space: nowrap; }
+    .brand span { color: #159b86; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: #46566a; font-weight: 600; font-size: 13px; transition: color .18s; }
+    .nav-links a:hover { color: #118576; }
+    .nav-links a.github-nav { border: 1px solid #dce5e9; padding: 10px 14px; border-radius: 10px; color: #1a2b3d; }
+    .menu-button { display: none; background: none; color: var(--ink); border: 1px solid #dce5e9; border-radius: 9px; padding: 7px 11px; cursor: pointer; }
+
+    .hero { overflow: hidden; position: relative; background: radial-gradient(ellipse at 80% 25%, #234b52 0, transparent 35%), linear-gradient(125deg, #101a2c, #182a43 67%, #12343c); color: #fff; }
+    .hero::before { content: ''; position: absolute; inset: 0; opacity: .12; pointer-events: none; background-image: linear-gradient(#7aa8a0 1px, transparent 1px),linear-gradient(90deg, #7aa8a0 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(to right, transparent 25%, black 100%); }
+    .hero-inner { position: relative; display: grid; grid-template-columns: 1.23fr .77fr; align-items: center; gap: 40px; min-height: 566px; padding-top: 80px; padding-bottom: 94px; }
+    .eyebrow { display: inline-flex; gap: 9px; align-items: center; letter-spacing: .14em; text-transform: uppercase; font-size: 11px; font-weight: 800; }
+    .hero .eyebrow { color: #a8e3da; }
+    .status-dot { width: 7px; height: 7px; display: inline-block; background: #8af0cf; border-radius: 50%; box-shadow: 0 0 0 5px #8af0cf22; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 760px; margin: 20px 0 18px; line-height: 1.06; letter-spacing: -.067em; font-size: clamp(46px, 6vw, 79px); font-weight: 820; }
+    h1 em { font-style: normal; color: var(--aqua); }
+    .hero-lead { color: #cbd6e0; font-size: clamp(16px, 1.6vw, 18px); max-width: 575px; line-height: 1.75; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 45px; padding: 0 18px; border-radius: 10px; font-weight: 750; font-size: 13px; transition: transform .18s, background .18s; }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { background: #a2f4db; color: #0e2834; }
+    .button.secondary { border: 1px solid rgba(255,255,255,.35); color: #fff; }
+    .button.secondary:hover { background: rgba(255,255,255,.1); }
+    .mini-facts { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 10px 21px; color: #a9bccd; font-size: 12px; }
+    .mini-facts span { display: inline-flex; align-items: center; gap: 7px; }
+    .mini-facts svg { opacity: .85; }
+    .hero-art { position: relative; isolation: isolate; height: 330px; display: grid; place-items: center; }
+    .orb { position: absolute; width: min(100%, 360px); aspect-ratio: 1; border: 1px solid #acd5d12d; border-radius: 50%; box-shadow: 0 0 0 43px #acd5d108, 0 0 0 87px #acd5d105, inset 0 0 80px #64d6c11c; }
+    .orb::before, .orb::after { content: ''; position: absolute; width: 9px; height: 9px; border-radius: 50%; background: #8eefd6; box-shadow: 0 0 24px #8eefd6; }
+    .orb::before { top: 18%; right: 14%; } .orb::after { bottom: 18%; left: 13%; }
+    .terminal-card { width: min(355px, 95%); position: relative; padding: 0; overflow: hidden; border: 1px solid #ffffff34; border-radius: 16px; transform: rotate(-4deg); box-shadow: 0 30px 80px #050b1c77; background: #0c1725; }
+    .terminal-top { padding: 13px 17px; background: #26364b; border-bottom: 1px solid #ffffff1a; display: flex; gap: 6px; align-items: center; }
+    .terminal-top i { width: 9px; height: 9px; border-radius: 50%; background: #f27b81; }
+    .terminal-top i:nth-child(2) { background: #f2c36a; } .terminal-top i:nth-child(3) { background: #71c994; }
+    .terminal-top small { margin-left: 12px; color: #9aadc0; font-size: 11px; }
+    .terminal-content { padding: 26px 21px 32px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; line-height: 1.95; font-size: 13px; color: #c7d8e7; }
+    .terminal-content .green { color: #9cf5dc; } .terminal-content .blue { color: #88b9fa; } .terminal-content .comment { color: #8295a8; }
+
+    main section:not(.hero) { padding: 94px 0; }
+    .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 29px; }
+    .section-kicker { color: #167c75; font-size: 11px; font-weight: 850; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 9px; }
+    h2 { font-size: clamp(30px, 4vw, 43px); line-height: 1.14; letter-spacing: -.055em; margin: 0; }
+    .section-intro { color: var(--muted); max-width: 600px; margin: 10px 0 0; font-size: 15px; }
+    .section-note { color: var(--muted); font-size: 13px; }
+    .inline-link { color: #137e74; border-bottom: 1px solid #91c8be; font-weight: 700; }
+    .inline-link:hover { color: #0c5557; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 26px; }
+    .panel { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; box-shadow: 0 14px 38px #1d38500a; }
+    .about-text { color: #475a6c; font-size: 15px; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .focus-title { font-weight: 800; margin: 0 0 15px; font-size: 15px; }
+    .focus-list { display: grid; gap: 12px; }
+    .focus-item { display: flex; gap: 12px; align-items: start; font-size: 14px; font-weight: 650; }
+    .focus-item b { font: 800 11px/22px ui-monospace, monospace; width: 25px; min-width: 25px; height: 25px; text-align: center; background: #e3f4ef; border-radius: 7px; color: #167a71; }
+
+    #projects { background: #fff; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .project-card { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; padding: 25px 26px; transition: transform .22s, box-shadow .22s, border-color .22s; }
+    .project-card:hover { transform: translateY(-4px); border-color: #b8d9d0; box-shadow: 0 17px 40px #12354b13; }
+    .project-card.featured { background: #f9fbfc; }
+    .project-top { display: flex; align-items: center; gap: 12px; justify-content: space-between; margin-bottom: 14px; }
+    .project-number { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; font-weight: 700; color: #168577; }
+    .pill { padding: 4px 9px; border-radius: 100px; background: #e9f5f1; color: #277268; font-size: 10px; font-weight: 750; letter-spacing: .01em; }
+    .pill.soft { color: #647388; background: #edf1f5; }
+    .project-card h3 { font-size: 21px; letter-spacing: -.035em; line-height: 1.25; margin-bottom: 10px; }
+    .project-card p { color: #607183; font-size: 14px; margin-bottom: 14px; }
+    .project-card .role { color: #30495b; margin: 0 0 16px; font-size: 13px; }
+    .role strong { color: #173041; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; margin-bottom: 22px; }
+    .tag { color: #566778; border: 1px solid #dbe5e8; padding: 4px 9px; border-radius: 6px; font-size: 11px; background: #fff; font-weight: 650; }
+    .project-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; border-top: 1px solid #e6ecef; padding-top: 17px; }
+    .project-footer a { display: inline-flex; align-items: center; gap: 7px; color: #116c67; font-size: 13px; font-weight: 800; }
+    .project-footer a:hover { text-decoration: underline; }
+    .project-footer .no-link { font-size: 12px; color: #8b97a5; }
+    .project-footer .kind { color: #8996a4; font-size: 11px; }
+    .subhead { font-size: 21px; letter-spacing: -.03em; margin: 42px 0 16px; }
+    .coursework-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+    .coursework { border: 1px solid #e2e9ed; border-radius: 14px; padding: 21px; background: #fbfcfd; }
+    .coursework .tiny-label { text-transform: uppercase; color: #258477; font-size: 10px; letter-spacing: .12em; font-weight: 850; }
+    .coursework h3 { font-size: 16px; line-height: 1.35; margin: 11px 0 9px; }
+    .coursework p { color: #627185; font-size: 12.5px; margin: 0 0 13px; }
+    .coursework .stack { font-size: 11px; color: #1f6f69; font-weight: 750; }
+    .note-line { margin: 15px 0 0; font-size: 12px; color: #7a8898; }
+
+    .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .timeline { border-left: 2px solid #d9e7e7; padding-left: 22px; display: grid; gap: 27px; margin-left: 6px; }
+    .timeline-item { position: relative; }
+    .timeline-item::before { content: ''; position: absolute; left: -29px; top: 6px; width: 11px; height: 11px; border-radius: 50%; background: #178d82; border: 2px solid #f7f9fc; box-shadow: 0 0 0 2px #bddcd5; }
+    .date { color: #198475; font-size: 11px; font-weight: 850; text-transform: uppercase; letter-spacing: .08em; }
+    .timeline h3 { margin: 7px 0 5px; font-size: 18px; line-height: 1.3; }
+    .timeline .place { color: #344c5c; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .timeline .detail { color: #68788b; font-size: 13px; margin-bottom: 0; }
+    .experience-card { margin-top: 20px; padding: 21px 24px; background: #eaf4f0; border-radius: 13px; }
+    .experience-card strong { font-size: 13px; }
+    .experience-card p { font-size: 12px; color: #567168; margin: 6px 0 0; }
+
+    #skills { background: #fff; }
+    .skills-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; }
+    .skill-card { padding: 24px 21px; border-radius: 15px; background: #f7f9fb; border: 1px solid var(--line); }
+    .skill-icon { width: 39px; height: 39px; display: grid; place-items: center; background: #e0f3ed; color: #11786f; font-family: ui-monospace, monospace; font-weight: 850; border-radius: 12px; font-size: 13px; }
+    .skill-card h3 { font-size: 15px; margin: 17px 0 8px; }
+    .skill-card p { font-size: 13px; color: #647586; margin: 0; }
+
+    .achievement-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+    .achievement { padding: 24px; border: 1px solid var(--line); background: white; border-radius: 16px; }
+    .achievement .year { font-size: 11px; font-weight: 850; color: #167f73; }
+    .achievement h3 { font-size: 17px; letter-spacing: -.025em; margin: 10px 0 10px; }
+    .achievement p { color: #647386; font-size: 13px; margin-bottom: 0; }
+
+    .contact { background: var(--navy); color: #fff; }
+    .contact-layout { display: flex; gap: 32px; align-items: center; justify-content: space-between; }
+    .contact .section-kicker { color: #9cebd6; }
+    .contact p { max-width: 550px; margin: 16px 0 0; color: #bdcad8; font-size: 15px; }
+    .contact-actions { display: flex; flex-direction: column; gap: 12px; min-width: 200px; }
+    .contact-actions .button { width: 100%; }
+    .footer { background: #0b1423; padding: 22px 0; color: #8293a8; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 12px; }
+    .footer a { color: #b0d6cb; }
+    .footer a:hover { text-decoration: underline; }
+    @media (max-width: 950px) { .hero-inner { grid-template-columns: 1.15fr .85fr; } .hero-art { transform: scale(.85); } .skills-grid { grid-template-columns: repeat(2,1fr); } .coursework-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 720px) {
+      .container { width: min(100% - 36px, 1110px); }
+      .nav-inner { min-height: 66px; }
+      .menu-button { display: block; }
+      .nav-links { display: none; position: absolute; left: 0; top: 65px; width: 100%; padding: 16px 24px 22px; background: #fff; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; box-shadow: 0 18px 28px #0b17271a; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 10px 6px; }
+      .nav-links a.github-nav { margin-top: 6px; text-align: center; }
+      .hero-inner { grid-template-columns: 1fr; min-height: 0; padding-top: 78px; padding-bottom: 70px; }
+      .hero-art { display: none; }
+      h1 { font-size: clamp(44px, 10vw, 64px); }
+      main section:not(.hero) { padding: 65px 0; }
+      .about-grid, .two-column, .project-grid, .coursework-grid, .achievement-grid { grid-template-columns: 1fr; }
+      .contact-layout { flex-direction: column; align-items: stretch; }
+      .contact-actions { flex-direction: row; }
+      .contact-actions .button { width: auto; }
+    }
+    @media (max-width: 440px) { .skills-grid { grid-template-columns: 1fr; } .hero-buttons, .contact-actions { flex-direction: column; } .hero-buttons .button, .contact-actions .button { width: 100%; } .panel { padding: 23px; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="container nav-inner" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Yongchao Zhu, home">YZ<span>.</span></a>
+      <button type="button" class="menu-button" id="menuButton" aria-controls="navLinks" aria-expanded="false">Menu ☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#recognition">Recognition</a>
+        <a href="#contact">Contact</a>
+        <a class="github-nav" href="https://github.com/chao2333" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div>
+          <div class="eyebrow"><span class="status-dot" aria-hidden="true"></span> MSc Computer Science · Université Paris-Saclay</div>
+          <h1 id="hero-title">Hi, I'm<br><em>Yongchao Zhu.</em></h1>
+          <p class="hero-lead">I build and explore software systems — from Android applications to operating systems, parallel computing, and algorithms. Currently pursuing my second year of a Computer Science master's degree in France.</p>
+          <div class="hero-buttons">
+            <a class="button primary" href="#projects">Explore my projects <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="https://github.com/chao2333" target="_blank" rel="noopener noreferrer">View GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="mini-facts">
+            <span>⌖ &nbsp;Orsay, France</span>
+            <span>◇ &nbsp;Systems &amp; high-performance computing</span>
+            <span>↗ &nbsp;<a href="https://yieldcode.blog" target="_blank" rel="noopener noreferrer">Personal blog</a></span>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orb"></div>
+          <div class="terminal-card">
+            <div class="terminal-top"><i></i><i></i><i></i><small>yongchao@portfolio:~</small></div>
+            <div class="terminal-content"><span class="green">$</span> whoami<br><span class="blue">Yongchao Zhu</span><br><span class="green">$</span> cat interests.txt<br><span class="comment"># areas I enjoy</span><br>systems_programming<br>parallel_computing<br>algorithms &amp; optimization<br><span class="green">$</span> <span class="comment">▌</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-head"><div><div class="section-kicker">01 / Introduction</div><h2 id="about-heading">A little about me</h2></div></div>
+        <div class="about-grid">
+          <article class="panel about-text">
+            <p>I'm <strong>Yongchao Zhu</strong>, a Computer Science master's student at <strong>Université Paris-Saclay</strong>. I completed the first year of the <strong>Quantum and Distributed Computer Science (QDCS)</strong> program in 2025–2026 and am continuing my M2 studies in 2026–2027.</p>
+            <p>Before that, I earned a bachelor's degree in <strong>Network Engineering</strong> from <strong>Zhongyuan University of Technology</strong>, China (2020–2024). My undergraduate work combined software engineering, networking and operating systems, including a thesis on visualizing operating-system algorithms.</p>
+            <p>I enjoy understanding how software behaves beneath the surface: how programs interact with the operating system, how computation can be distributed or parallelized, and how careful implementation improves performance.</p>
+          </article>
+          <aside class="panel">
+            <h3 class="focus-title">Current areas of interest</h3>
+            <div class="focus-list">
+              <div class="focus-item"><b>01</b><span>Systems programming &amp; operating systems</span></div>
+              <div class="focus-item"><b>02</b><span>Parallel programming &amp; performance optimization</span></div>
+              <div class="focus-item"><b>03</b><span>Distributed algorithms &amp; computer networks</span></div>
+              <div class="focus-item"><b>04</b><span>Quantum computing &amp; algorithm design</span></div>
+              <div class="focus-item"><b>05</b><span>Practical application development</span></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="section-kicker">02 / Selected work</div><h2 id="projects-heading">Projects &amp; research</h2><p class="section-intro">A selection of independently developed applications, academic research, systems labs and recent coursework.</p></div>
+          <a class="inline-link section-note" href="https://github.com/chao2333?tab=repositories" target="_blank" rel="noopener noreferrer">All public repositories ↗</a>
+        </div>
+        <div class="project-grid">
+          <article class="project-card featured">
+            <div class="project-top"><span class="project-number">PROJECT 01</span><span class="pill">Public source</span></div>
+            <h3>FineWeather — Android Weather App</h3>
+            <p>Developed an Android weather application presenting temperature, precipitation and air-quality information for the user's location or a selected city. Built server-side API endpoints to manage application behavior and content.</p>
+            <p class="role"><strong>My contribution:</strong> Application development, Android UI, API integration and server communication.</p>
+            <div class="tags"><span class="tag">Kotlin</span><span class="tag">Android</span><span class="tag">Server APIs</span><span class="tag">Mobile development</span></div>
+            <div class="project-footer"><a href="https://github.com/chao2333/FineWeather" target="_blank" rel="noopener noreferrer">Browse source code ↗</a><span class="kind">Personal project</span></div>
+          </article>
+          <article class="project-card featured">
+            <div class="project-top"><span class="project-number">PROJECT 02</span><span class="pill">Thesis available</span></div>
+            <h3>Visualizing Operating-System Algorithms</h3>
+            <p>Undergraduate thesis exploring the implementation and visualization of scheduling and process-synchronization algorithms inspired by Unix Version 6. Algorithm behavior was presented interactively in a browser using Canvas.</p>
+            <p class="role"><strong>My contribution:</strong> Lead developer and thesis author; algorithm implementation and visualization.</p>
+            <div class="tags"><span class="tag">Operating systems</span><span class="tag">Unix V6</span><span class="tag">HTML Canvas</span><span class="tag">Visualization</span></div>
+            <div class="project-footer"><a href="https://github.com/chao2333/Thesis/blob/main/Thesis.pdf" target="_blank" rel="noopener noreferrer">Read the thesis ↗</a><span class="kind">Bachelor's research</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-top"><span class="project-number">PROJECT 03</span><span class="pill">Public lab</span></div>
+            <h3>CMU 15-213 — Data Lab</h3>
+            <p>Systems-programming exercises based on CMU's computer-systems curriculum, focused on bit-level representations and low-level C programming. The public repository contains Data Lab materials and work files.</p>
+            <p class="role"><strong>My contribution:</strong> Systems programming practice and work on C/bit-manipulation exercises.</p>
+            <div class="tags"><span class="tag">C</span><span class="tag">Bitwise operations</span><span class="tag">Computer systems</span></div>
+            <div class="project-footer"><a href="https://github.com/chao2333/Lab-CMU15213/tree/main/datalab" target="_blank" rel="noopener noreferrer">Browse lab files ↗</a><span class="kind">Independent study</span></div>
+          </article>
+          <article class="project-card">
+            <div class="project-top"><span class="project-number">PROJECT 04</span><span class="pill">Public workspace</span></div>
+            <h3>xv6 / MIT 6.S081 Operating-System Study</h3>
+            <p>Studied operating-system internals through the educational xv6 RISC-V codebase, covering kernel structures, processes and low-level system interfaces. This repository is a learning workspace based on MIT's teaching OS.</p>
+            <p class="role"><strong>My contribution:</strong> Reading, experimentation and learning with the educational OS codebase; upstream xv6 is not my original software.</p>
+            <div class="tags"><span class="tag">C</span><span class="tag">RISC-V</span><span class="tag">xv6</span><span class="tag">Kernel fundamentals</span></div>
+            <div class="project-footer"><a href="https://github.com/chao2333/MIT6.S081-lib" target="_blank" rel="noopener noreferrer">View study repository ↗</a><span class="kind">Independent study</span></div>
+          </article>
+        </div>
+
+        <h3 class="subhead">Selected master's coursework</h3>
+        <div class="coursework-grid">
+          <article class="coursework"><div class="tiny-label">Parallel computing</div><h3>CUDA Matrix Multiplication</h3><p>Implemented and benchmarked several GPU matrix-multiplication kernels, comparing thread/block mappings and performance with cuBLAS.</p><div class="stack">CUDA · C++ · GPU benchmarking · cuBLAS</div></article>
+          <article class="coursework"><div class="tiny-label">Performance engineering</div><h3>SIMD &amp; OpenMP Optimization</h3><p>Explored loop optimization, tiling, SIMD vectorization and shared-memory parallelism for numerical workloads.</p><div class="stack">C/C++ · AVX · OpenMP · BLAS</div></article>
+          <article class="coursework"><div class="tiny-label">Algorithms</div><h3>Steiner Tree &amp; Approximation</h3><p>Studied computational complexity and approximation approaches to the Steiner Tree problem, including a reduction from Exact Cover by 3-Sets.</p><div class="stack">Graph algorithms · NP-completeness · Proofs</div></article>
+          <article class="coursework"><div class="tiny-label">Distributed systems</div><h3>Leader Election &amp; Consensus</h3><p>Analyzed distributed protocols and fault-tolerant consensus, including correctness arguments and execution scenarios.</p><div class="stack">Distributed algorithms · Protocol analysis</div></article>
+          <article class="coursework"><div class="tiny-label">Quantum computing</div><h3>Quantum Algorithms with Qiskit</h3><p>Practiced quantum phase estimation and modular arithmetic circuits, studying their use in quantum algorithms.</p><div class="stack">Python · Qiskit · Quantum circuits</div></article>
+          <article class="coursework"><div class="tiny-label">Networking &amp; security</div><h3>Software Firewall</h3><p>Contributed to an Ubuntu-based software firewall with application, IP and port filtering and configurable security policies.</p><div class="stack">C++ · libpcap · iptables · Ubuntu</div></article>
+        </div>
+        <p class="note-line">Coursework without a public repository is summarized here rather than linked to an unrelated or unfinished codebase.</p>
+      </div>
+    </section>
+
+    <section id="experience" aria-labelledby="experience-heading">
+      <div class="container">
+        <div class="section-head"><div><div class="section-kicker">03 / My path</div><h2 id="experience-heading">Education &amp; experience</h2></div></div>
+        <div class="two-column">
+          <article class="panel">
+            <h3 class="focus-title">Education</h3>
+            <div class="timeline">
+              <div class="timeline-item"><div class="date">2026 — Present</div><h3>Master 2 · Computer Science</h3><p class="place">Université Paris-Saclay · France</p><p class="detail">Advanced studies with a focus on computer science, systems and parallel/distributed computation.</p></div>
+              <div class="timeline-item"><div class="date">2025 — 2026</div><h3>Master 1 · Quantum and Distributed Computer Science</h3><p class="place">Université Paris-Saclay · France</p><p class="detail">Completed M1 (60 ECTS), overall result 15.089/20. Coursework included high-performance computing, distributed algorithms, quantum computing, advanced C++ and machine learning.</p></div>
+              <div class="timeline-item"><div class="date">2020 — 2024</div><h3>Bachelor's · Network Engineering</h3><p class="place">Zhongyuan University of Technology · China</p><p class="detail">Studied operating systems, computer networks, software development, data structures and computer architecture. Completed an undergraduate thesis on OS algorithm visualization.</p></div>
+            </div>
+          </article>
+          <article class="panel">
+            <h3 class="focus-title">Professional &amp; project experience</h3>
+            <div class="timeline">
+              <div class="timeline-item"><div class="date">Apr — May 2023</div><h3>Software Development Engineer Intern</h3><p class="place">Huatu Education · Beijing, China</p><p class="detail">Worked on WeChat QR-code login, server-request interfaces and order-query optimization for a production application. Reported a 20% reduction in database queries for the order-query workflow.</p></div>
+              <div class="timeline-item"><div class="date">2023</div><h3>Network System Integration · Project Lead</h3><p class="place">Academic project</p><p class="detail">Coordinated a team project designing an enterprise network with headquarters and branch offices, using eNSP to configure inter-site connectivity and network protocols.</p></div>
+              <div class="timeline-item"><div class="date">2023</div><h3>Software Firewall · Core Team Member</h3><p class="place">Academic project</p><p class="detail">Implemented filtering features with C++, libpcap and Ubuntu iptables, including policies for applications, IP addresses and ports.</p></div>
+            </div>
+            <div class="experience-card"><strong>My approach</strong><p>I like projects that combine theoretical ideas with working implementations: define the problem, build a prototype, test behavior and measure results.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section-head"><div><div class="section-kicker">04 / Toolbox</div><h2 id="skills-heading">Technical skills</h2><p class="section-intro">Languages and tools I have used in personal projects, academic labs and software development.</p></div></div>
+        <div class="skills-grid">
+          <article class="skill-card"><div class="skill-icon">{ }</div><h3>Programming</h3><p>C · C++ · Python · Kotlin · SQL fundamentals</p></article>
+          <article class="skill-card"><div class="skill-icon">&gt;_</div><h3>Systems &amp; performance</h3><p>Linux / Ubuntu · CUDA · OpenMP · MPI · SIMD / AVX · BLAS · xv6</p></article>
+          <article class="skill-card"><div class="skill-icon">&lt;/&gt;</div><h3>Applications &amp; tools</h3><p>Android development · Git / GitHub · HTML / CSS · REST API integration · eNSP · iptables</p></article>
+          <article class="skill-card"><div class="skill-icon">∑</div><h3>Computing &amp; research</h3><p>Graph algorithms · Distributed systems · Qiskit · Numerical benchmarking · Technical writing</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="recognition" aria-labelledby="recognition-heading">
+      <div class="container">
+        <div class="section-head"><div><div class="section-kicker">05 / Milestones</div><h2 id="recognition-heading">Recognition &amp; training</h2></div></div>
+        <div class="achievement-grid">
+          <article class="achievement"><div class="year">2026</div><h3>Gray Scott School 2026</h3><p>Completed 57 hours of training focused on programming and optimization for heterogeneous architectures, June 22 – July 4, 2026.</p></article>
+          <article class="achievement"><div class="year">2022 — 2023</div><h3>Third-Class Academic Scholarship</h3><p>Awarded by Zhongyuan University of Technology in recognition of academic performance.</p></article>
+          <article class="achievement"><div class="year">2023</div><h3>Internship Recognition</h3><p>Received an internship certificate recognizing work as a Development Engineer at Huatu Education's Technology Center.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-heading">
+      <div class="container contact-layout">
+        <div><div class="section-kicker">06 / Connect</div><h2 id="contact-heading">Let's get in touch.</h2><p>Interested in my work, a software engineering internship or a technical collaboration? Feel free to reach out, or explore my public projects on GitHub.</p></div>
+        <div class="contact-actions"><a class="button primary" href="mailto:yongchaozhu@icloud.com">Send an email ↗</a><a class="button secondary" href="https://github.com/chao2333" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Yongchao Zhu. Built with HTML &amp; CSS.</span><span><a href="https://github.com/chao2333" target="_blank" rel="noopener noreferrer">GitHub</a> &nbsp;·&nbsp; <a href="https://yieldcode.blog" target="_blank" rel="noopener noreferrer">Blog</a> &nbsp;·&nbsp; <a href="#home">Back to top ↑</a></span></div></footer>
+  <script>
+    (function () {
+      var menu = document.getElementById('menuButton');
+      var links = document.getElementById('navLinks');
+      menu.addEventListener('click', function () {
+        var expanded = menu.getAttribute('aria-expanded') === 'true';
+        menu.setAttribute('aria-expanded', String(!expanded));
+        links.classList.toggle('open', !expanded);
+      });
+      links.addEventListener('click', function (event) {
+        if (event.target.closest('a')) {
+          links.classList.remove('open');
+          menu.setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.getElementById('year').textContent = String(new Date().getFullYear());
+    }());
+  </script>
+</body>
+</html>
