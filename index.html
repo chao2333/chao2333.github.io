@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Yongchao Zhu — computer science student at Université Paris-Saclay. Projects, coursework and experience.">
+  <title>Yongchao Zhu</title>
+  <style>
+    :root { color-scheme: light; --text:#252a30; --muted:#626b75; --link:#275d9a; --border:#e4e7ea; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { max-width:920px; margin:0 auto; padding:0 28px 65px; font:15px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; color:var(--text); background:#fff; }
+    a { color:var(--link); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    header { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:29px 0 24px; border-bottom:1px solid var(--border); }
+    .name { font-weight:700; font-size:17px; color:var(--text); }
+    nav { display:flex; gap:18px; flex-wrap:wrap; font-size:13px; }
+    nav a { color:var(--muted); }
+    .intro { padding:65px 0 30px; }
+    h1 { font-size:38px; font-weight:700; letter-spacing:-1px; line-height:1.15; margin:0 0 12px; }
+    .subtitle { font-size:17px; color:var(--muted); margin:0 0 18px; }
+    .intro p:last-child { max-width:690px; margin-bottom:0; }
+    h2 { font-size:23px; margin:0 0 20px; letter-spacing:-.4px; }
+    h3 { font-size:16px; margin:0 0 6px; line-height:1.4; }
+    p { margin:0 0 13px; }
+    section { padding:36px 0; border-bottom:1px solid var(--border); }
+    .muted { color:var(--muted); }
+    .small { font-size:13px; }
+    .links { display:flex; gap:18px; flex-wrap:wrap; margin-top:20px; font-size:14px; }
+    .entry { margin:0 0 27px; }
+    .entry:last-child { margin-bottom:0; }
+    .entry-top { display:flex; gap:12px; justify-content:space-between; align-items:baseline; }
+    .date { font-size:13px; color:var(--muted); white-space:nowrap; }
+    .entry p { color:#47515c; margin-bottom:5px; }
+    .tech { font-size:13px; color:var(--muted); }
+    .projects { display:grid; grid-template-columns:1fr 1fr; column-gap:45px; row-gap:8px; }
+    .coursework { display:grid; grid-template-columns:1fr 1fr; gap:13px 40px; }
+    .coursework > div { padding-bottom:12px; }
+    .coursework p { color:#47515c; font-size:14px; }
+    .coursework h3 { font-size:15px; }
+    .small-heading { font-size:16px; margin:31px 0 18px; }
+    .skill-row { display:grid; grid-template-columns:145px 1fr; gap:15px; margin-bottom:12px; }
+    .skill-row strong { font-size:14px; }
+    .skill-row span { color:#47515c; }
+    .notes { color:var(--muted); font-size:13px; }
+    footer { padding-top:24px; color:var(--muted); font-size:13px; display:flex; justify-content:space-between; gap:20px; }
+    @media(max-width:650px) { body { padding:0 19px 45px; } header { display:block; } nav { margin-top:9px; gap:13px; } .intro { padding:45px 0 20px; } h1 { font-size:32px; } .projects,.coursework { grid-template-columns:1fr; } .entry-top { display:block; } .date { display:block; margin-bottom:6px; } .skill-row { grid-template-columns:1fr; gap:0; } footer { display:block; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="name" href="#top">Yongchao Zhu</a>
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main id="top">
+    <div class="intro">
+      <h1>Yongchao Zhu</h1>
+      <p class="subtitle">M2 Computer Science student · Université Paris-Saclay</p>
+      <p>I'm currently studying computer science in France. Most of my recent work has been in systems programming, parallel computing and algorithms. I also enjoy building small applications and working through operating-system labs.</p>
+      <div class="links"><a href="https://github.com/chao2333">GitHub ↗</a><a href="https://yieldcode.blog">Blog ↗</a><a href="mailto:yongchaozhu@icloud.com">Email ↗</a></div>
+    </div>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>I received my bachelor's degree in Network Engineering from Zhongyuan University of Technology in 2024. My undergraduate thesis was about implementing and visualizing operating-system algorithms. After that, I moved to France for the master's program at Université Paris-Saclay. I completed the first year in Quantum and Distributed Computer Science (QDCS) in 2025–2026 and am now in M2.</p>
+      <p>My interests have shifted more toward low-level software, distributed algorithms and performance. I like assignments where I can implement something, test it and understand why it behaves the way it does.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <article class="entry">
+          <h3>FineWeather — Android weather app</h3>
+          <p>Built an Android app for checking weather conditions in the current or selected location, including temperature, precipitation and air quality. I worked on the app itself and the server-side interfaces used to control its content and behavior.</p>
+          <p class="tech">My role: app development, UI and API integration · Kotlin, Android, APIs</p>
+          <a class="small" href="https://github.com/chao2333/FineWeather">GitHub repository ↗</a>
+        </article>
+        <article class="entry">
+          <h3>Operating-system algorithm visualization</h3>
+          <p>My bachelor's thesis project. I implemented scheduling and process-synchronization algorithms based on Unix Version 6 and used HTML Canvas to visualize how they execute.</p>
+          <p class="tech">My role: lead developer and thesis author · Unix V6, OS algorithms, Canvas</p>
+          <a class="small" href="https://github.com/chao2333/Thesis">Thesis repository ↗</a>
+        </article>
+        <article class="entry">
+          <h3>CMU 15-213 systems labs</h3>
+          <p>A repository containing exercises from the computer-systems curriculum, including C programming and bit-level manipulation in Data Lab.</p>
+          <p class="tech">My role: independent study and lab exercises · C, bitwise operations</p>
+          <a class="small" href="https://github.com/chao2333/Lab-CMU15213">GitHub repository ↗</a>
+        </article>
+        <article class="entry">
+          <h3>MIT 6.S081 / xv6 study</h3>
+          <p>My workspace for studying operating-system internals through xv6 and the MIT 6.S081 materials. The underlying xv6 teaching OS is an upstream project, not software I originally wrote.</p>
+          <p class="tech">My role: study and experimentation · C, RISC-V, xv6</p>
+          <a class="small" href="https://github.com/chao2333/MIT6.S081-lib">GitHub repository ↗</a>
+        </article>
+      </div>
+
+      <h3 class="small-heading">Recent coursework</h3>
+      <div class="coursework">
+        <div><h3>CUDA matrix multiplication</h3><p>Implemented several GPU matrix-multiplication kernels and compared thread/block layouts with cuBLAS. My work focused on correctness and benchmarking.</p><p class="tech">CUDA, C++, cuBLAS</p></div>
+        <div><h3>SIMD and OpenMP optimization</h3><p>Experimented with loop ordering, tiling, SIMD vectorization and OpenMP for numerical code, comparing measured performance across implementations.</p><p class="tech">C/C++, AVX, OpenMP, BLAS</p></div>
+        <div><h3>Steiner Tree problem</h3><p>Wrote an algorithms report covering NP-completeness, a reduction from Exact Cover by 3-Sets and approximation algorithms.</p><p class="tech">Graph algorithms, complexity, proofs</p></div>
+        <div><h3>Distributed algorithms</h3><p>Worked on leader election and consensus exercises, including protocol correctness and fault-tolerant execution cases.</p><p class="tech">Distributed systems, formal reasoning</p></div>
+        <div><h3>Quantum algorithms</h3><p>Used Qiskit for exercises involving quantum phase estimation and modular arithmetic circuits.</p><p class="tech">Python, Qiskit</p></div>
+        <div><h3>Software firewall</h3><p>Worked as a core team member on an Ubuntu firewall with application, IP and port filtering and custom rules.</p><p class="tech">C++, libpcap, iptables</p></div>
+      </div>
+      <p class="notes">The coursework above is summarized here; not all assignments have public repositories.</p>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="entry"><div class="entry-top"><h3>Université Paris-Saclay — M2 Computer Science</h3><span class="date">2026–present</span></div><p>Currently studying in the second year of the master's program.</p></div>
+      <div class="entry"><div class="entry-top"><h3>Université Paris-Saclay — M1 Quantum and Distributed Computer Science</h3><span class="date">2025–2026</span></div><p>Completed 60 ECTS. Relevant courses included distributed algorithms, advanced C++, parallel algorithms, quantum computing and high-performance computing.</p></div>
+      <div class="entry"><div class="entry-top"><h3>Zhongyuan University of Technology — BEng Network Engineering</h3><span class="date">2020–2024</span></div><p>Studied computer networks, operating systems, data structures, databases and computer architecture.</p></div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="entry"><div class="entry-top"><h3>Software Development Engineer Intern · Huatu Education, Beijing</h3><span class="date">Apr–May 2023</span></div><p>Worked on WeChat QR-code login, network request interfaces and order queries. One optimization reduced the number of database queries in the order-query workflow by about 20%.</p></div>
+      <div class="entry"><div class="entry-top"><h3>Network System Integration · Academic project lead</h3><span class="date">2023</span></div><p>Helped plan the project, divided work among team members and designed a headquarters-and-branches network with eNSP.</p></div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skill-row"><strong>Programming</strong><span>C, C++, Python, Kotlin</span></div>
+      <div class="skill-row"><strong>Systems</strong><span>Linux, CUDA, MPI, OpenMP, SIMD/AVX, xv6</span></div>
+      <div class="skill-row"><strong>Development</strong><span>Git, GitHub, Android, HTML/CSS, API integration</span></div>
+      <div class="skill-row"><strong>Other tools</strong><span>Qiskit, BLAS, libpcap, iptables, eNSP</span></div>
+    </section>
+
+    <section id="other">
+      <h2>Other</h2>
+      <p><strong>Gray Scott School 2026:</strong> participated in 57 hours of training on programming and optimization for heterogeneous architectures.</p>
+      <p><strong>Third-class scholarship:</strong> Zhongyuan University of Technology, academic year 2022–2023.</p>
+    </section>
+    <section id="contact"><h2>Contact</h2><p>Email: <a href="mailto:yongchaozhu@icloud.com">yongchaozhu@icloud.com</a></p><p>GitHub: <a href="https://github.com/chao2333">github.com/chao2333</a></p><p>Blog: <a href="https://yieldcode.blog">yieldcode.blog</a></p></section>
+  </main>
+  <footer><span>Yongchao Zhu · 2026</span><span>Made with plain HTML and CSS.</span></footer>
+</body>
+</html>
